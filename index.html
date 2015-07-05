@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+</body>
+
+<script>
+var penny =  (function(){
+	var pennyHouse  =function(message){
+		this.menling = message;
+	}
+	var men,count=0;
+	var react = function(who){
+		if(who=="sheldon"){
+			alert("enough!")
+		}
+	}
+	var info ={ 
+		sendMessage:function(message,byWho){
+			count++;
+			if(!men){
+				men = new pennyHouse(message);
+			}
+			men.menling+=count;
+			
+			if(count==3){
+				react(byWho);
+			}
+			return men;
+		}
+
+	}
+
+	return info
+})()
+
+
+var sheldon={
+	name:"sheldon",
+	callPenny:function(msg,name){
+		/*if(xmsg.menling){
+			alert(xmsg.menling);
+		}*/
+		var xmsg =penny.sendMessage(msg,name);
+		alert(xmsg.menling);
+		
+	}
+}
+var i=3;
+while(i--){
+sheldon.callPenny("penny","sheldon");
+}
+</script>
+</html>
+
